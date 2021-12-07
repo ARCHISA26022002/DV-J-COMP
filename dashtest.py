@@ -26,22 +26,7 @@ q8df= pd.DataFrame(data=df, columns=['Journey_Purpose_of_Driver','Sex_of_Driver'
 q8df=q8df[q8df.Sex_of_Driver !=-1]
 
 
-#Heat Map 1
-# def month(string):
-#     return int(string[3:5])
-# df['Month']=df['Date'].apply(lambda x: month(x))
-# def hour(string):
-#     s=string[0:2]
-#     return int(s)
-# df['Hour']=df['Time'].apply(lambda x: hour(x))
-# q7df=pd.DataFrame(data=df,columns=['Hour','Day_of_Week','Month','Accident_Severity'])
-# q7df=q7df[q7df.Accident_Severity ==1]
 
-# def heatMap():
-#     q7df=pd.DataFrame(data=df,columns=['Hour','Day_of_Week','Month','Accident_Severity'])
-#     q7df=q7df[q7df.Accident_Severity ==1]
-#     fig = px.imshow(q7df)
-#     return fig
 
 def BarPlot():
     fig = px.bar(q8df,x='Journey_Purpose_of_Driver',y='Age_of_Driver',color='Sex_of_Driver',labels={'Male','Female','Other'},title='Journey Purpose of Driver vs Age_of_Driver')
