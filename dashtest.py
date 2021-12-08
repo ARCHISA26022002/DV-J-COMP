@@ -12,28 +12,7 @@ acci=pd.read_csv("C:/Users/PC-DELL/OneDrive/Desktop/DV J COMP/Datasets_DV/Accide
 cf=pd.read_csv("C:/Users/PC-DELL/OneDrive/Desktop/DV J COMP/Datasets_DV/Casualties0514.csv")
 vf=pd.read_csv("C:/Users/PC-DELL/OneDrive/Desktop/DV J COMP/Datasets_DV/Vehicles0514.csv")
 
-first_df=pd.merge(cf,acci,on='Accident_Index')
-df=pd.merge(first_df,vf,on='Accident_Index')
-df.isnull().sum()
-
-df.drop('LSOA_of_Accident_Location',axis=1,inplace=True)
-df.dropna(subset=['Location_Easting_OSGR','Location_Northing_OSGR', 'Longitude', 'Latitude'],axis=0,inplace=True)
-df.dropna(subset=['Time'],axis=0,inplace=True)
-
-df.isnull().values.any()
-
-q8df= pd.DataFrame(data=df, columns=['Journey_Purpose_of_Driver','Sex_of_Driver','Age_of_Driver','Age_Band_of_Driver','Driver_Home_Area_Type'])
-q8df=q8df[q8df.Sex_of_Driver !=-1]
-
-
-
-
-def BarPlot():
-    fig = px.bar(q8df,x='Journey_Purpose_of_Driver',y='Age_of_Driver',color='Sex_of_Driver',labels={'Male','Female','Other'},title='Journey Purpose of Driver vs Age_of_Driver')
-    return fig
-
-
-#Muazz1
+#M1
 def number_of_accidents():
     acci=pd.read_csv('C:/Users/PC-DELL/OneDrive/Desktop/DV J COMP/Datasets_DV/Accidents0514.csv')
     acci['Hour'] = acci['Time'].map(lambda x: str(x).split(':')[0])
@@ -51,7 +30,7 @@ def number_of_accidents():
     fig = px.line(x=hour, y=num_of_fatal_acci, labels={'x':'Hour', 'y':'Total Number of Fatal Accidents'})
     return fig
 
-#Muazz2
+#Mu2
 def number_of_accidents1():
     acci=pd.read_csv('C:/Users/PC-DELL/OneDrive/Desktop/DV J COMP/Datasets_DV/Accidents0514.csv')
     acci['Hour'] = acci['Time'].map(lambda x: str(x).split(':')[0])
@@ -70,7 +49,7 @@ def number_of_accidents1():
     return fig
 
 
-#Muazz3
+#M3
 def number_of_accidents2():
     acci=pd.read_csv('C:/Users/PC-DELL/OneDrive/Desktop/DV J COMP/Datasets_DV/Accidents0514.csv')
     acci['Hour'] = acci['Time'].map(lambda x: str(x).split(':')[0])
@@ -211,7 +190,7 @@ html.Div([
                     style={'textAlign': 'center',
                            'color': 'white',
                            'fontSize':25}),
-            html.P(f"(20BCE0488)",
+            html.P(f"(20BCE0471)",
                     style={'textAlign': 'center',
                            'color': '#DD4A48',
                            'fontSize': 20}),
@@ -285,5 +264,5 @@ html.Div([
 ])
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server()
 
